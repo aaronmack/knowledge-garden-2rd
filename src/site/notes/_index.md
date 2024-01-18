@@ -12,6 +12,14 @@
 
 # Entrance 2
 
+### 2024-01-17 - AYON
+
+[[adv/cg_pipeline#AYON\|CGPipeline - AYON]]
+
+<img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/1705577962584.webp" alt="1705577962584" width=600/>
+
+AYON开源pipeline工具,目前已经release了版本v1.0.0，openpype现以是core模块。
+
 ### 2024-01-10 - CGRU Render farm
 
 [[adv/cg_pipeline#CGRU\|CGRU 配置]]
