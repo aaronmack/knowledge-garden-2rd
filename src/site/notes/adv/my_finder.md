@@ -49,6 +49,10 @@
 
 # 工具
 
+## 备份
+
+1. restic go语言写的备份工具 [GitHub - restic/restic: Fast, secure, efficient backup program](https://github.com/restic/restic)
+
 ## 笔记
 
 1. 做笔记工具 (Obsidian + Obsidian Plugin(Digital Garden)) [[adv/digital_garden\|Digital Garden]]
@@ -66,9 +70,9 @@
 
 ## 建站
 
-1. 非常容易上手的一个建站工具。丰富的插件与主题。[GitHub - halo-dev/halo: 强大易用的开源建站工具。](https://github.com/halo-dev/halo)
+1. Halo 非常容易上手的一个建站工具。丰富的插件与主题。[GitHub - halo-dev/halo: 强大易用的开源建站工具。](https://github.com/halo-dev/halo)
 2. 专为作家打造的基于 Markdown 的简洁出版平台。[GitHub - writefreely/writefreely: A clean, Markdown-based publishing platform made for writers. Write together and build a community.](https://github.com/writefreely/writefreely)
-3. [GitHub - hexojs/hexo: A fast, simple & powerful blog framework, powered by Node.js.](https://github.com/hexojs/hexo)非常简单的命令就可以搭建起一个简单博客网站。
+3. Hexo [GitHub - hexojs/hexo: A fast, simple & powerful blog framework, powered by Node.js.](https://github.com/hexojs/hexo)非常简单的命令就可以搭建起一个简单博客网站。
 ```
 - npm install hexo-cli -g
 - hexo init blog
@@ -76,7 +80,8 @@
 - npm install
 - hexo server
 ```
-4. 一个用PHP和Laravel建立的创建文档/wiki内容的平台。[GitHub - BookStackApp/BookStack: A platform to create documentation/wiki content built with PHP & Laravel](https://github.com/BookStackApp/BookStack)。windows下的安装稍微麻烦点。需要参考视频 [Manual BookStack Installation on Windows 10 - YouTube](https://www.youtube.com/watch?v=_v-4BhVz7OI)
+4. BookStack 一个用PHP和Laravel建立的创建文档/wiki内容的平台。[GitHub - BookStackApp/BookStack: A platform to create documentation/wiki content built with PHP & Laravel](https://github.com/BookStackApp/BookStack)。windows下的安装稍微麻烦点。需要参考视频 [Manual BookStack Installation on Windows 10 - YouTube](https://www.youtube.com/watch?v=_v-4BhVz7OI)
+5. Hugo+Netlify 轻松创建任何类型网站，无依赖  https://github.com/HugoBlox/hugo-blox-builder
 
 ## 游戏
 
@@ -118,6 +123,7 @@
     <img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/1702310448042.webp" alt="1702310448042" width=500/>
 27. 调色板软件 [GitHub - eigenmiao/Rickrack: Generate harmonious colors freely.](https://github.com/eigenmiao/Rickrack)
 28. 图像查看器用 Rust 编写(简约跨平台) https://github.com/woelper/oculante
+29. Markdown转成简历模板 - https://github.com/i5heu/Faultier-CV
 
 
 ## AI相关
@@ -175,20 +181,19 @@
 1. Github上超牛的Build-Your-Own-X （构建你自己的XXX）,包含了许多技术相关的，例如3D渲染，聊天机器人，操作系统等等 [GitHub - codecrafters-io/build-your-own-x: Master programming by recreating your favorite technologies from scratch.](https://github.com/codecrafters-io/build-your-own-x)
    <img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/image.18h8kyfsdfcw.webp" alt="image" width=500/>
 
-# 学习
+# 资源
 
 1. 英语外刊杂志，经济学人、纽约客等 [GitHub - hehonghui/awesome-english-ebooks: 经济学人(含音频)、纽约客、卫报、连线、大西洋月刊等英语杂志免费下载,支持epub、mobi、pdf格式, 每周更新](https://github.com/hehonghui/awesome-english-ebooks)
 2. 掘金翻译计划，翻译了很多技术文章。 [GitHub - xitu/gold-miner: 🥇掘金翻译计划，可能是世界最大最好的英译中技术社区，最懂读者和译者的翻译平台：](https://github.com/xitu/gold-miner)
 3. Maspeak是一个学习新语言单词的平台。搭配有图片。[Learn vocabulary in any language !](https://maspeak.com/)
-4. 视频技术讲解（面向开发人员） https://github.com/leandromoreira/digital_video_introduction/blob/master/README-cn.md
-
-# 资源
-
+4. 视频（Digital Video）技术讲解（面向开发人员） https://github.com/leandromoreira/digital_video_introduction/blob/master/README-cn.md
+5. 中国历朝历代视频讲解 [中国历朝代视频讲解](https://www.historyline.online/)
 1. 开源的CG-Pipeline（管道）工具 [GitHub - cgwire/awesome-cg-vfx-pipeline: List of open-source technologies that help in the process of building a pipeline for CG and VFX productions](https://github.com/cgwire/awesome-cg-vfx-pipeline)
 2. 开源的图形引擎和游戏引擎开放源代码列表 [GitHub - Gforcex/OpenGraphic: Graphic Engine & Game Engine lists](https://github.com/Gforcex/OpenGraphic)
 3. Vulkan® 的开源 C++ 示例合集 [GitHub - SaschaWillems/Vulkan: Examples and demos for the new Vulkan API](https://github.com/SaschaWillems/Vulkan)
 4. 收集了国内开发者的项目集合 [GitHub - 1c7/chinese-independent-developer: 👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么](https://github.com/1c7/chinese-independent-developer)
 5. 开源**灵感**数据库,包含设计，游戏，摄影，壁纸等等，链接集合。[GitHub - zhaoolee/ins: 🍭互联网从业者的灵感数据库，无广告，Github Actions自动检测网站访问速度](https://github.com/zhaoolee/ins)
+6. 概率机器学习书籍（第二部） - [probml.github.io/pml-book/book2.html](https://probml.github.io/pml-book/book2.html)
 
 # 游戏
 
