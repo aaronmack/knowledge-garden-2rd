@@ -74,6 +74,7 @@
 3. **Capsule** - https://github.com/Takanu/Capsule 批量导出Blender中的场景内容。
 4. BlenderGIS - https://github.com/domlysz/BlenderGIS 导入geographic地理数据。
 5. Rigify - CloudRig - 自动绑定的功能集包。 [Blender / CloudRig · GitLab](https://gitlab.com/blender/CloudRig)
+6. 自动地形 (输入简单多边形生成地形) https://unicornhunter.gumroad.com/l/AutoTerrainer
 ## awesome
 
 1. CG VFX Pipeline [GitHub - cgwire/awesome-cg-vfx-pipeline: List of open-source technologies that help in the process of building a pipeline for CG and VFX productions](https://github.com/cgwire/awesome-cg-vfx-pipeline)
@@ -99,6 +100,9 @@
 12. 3D Scans https://threedscans.com/ - 3D扫描模型
 13. ambientcg [ambientCG - CC0 Textures, HDRIs and Models](https://ambientcg.com/)
 15. Armorpaint Cloud https://github.com/armory3d/armortools/tree/main/armorpaint
+16. Maya Rigs https://animationmethods.com/rigs.html
+17. Maya rigs and tools https://gumroad.com/
+18. Maya Rigs https://www.characterrigs.com/
 
 ## Example
 
