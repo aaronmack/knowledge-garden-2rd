@@ -105,8 +105,9 @@ def commands():
 {
 	"cgru_config":
 	{
-		"-company":"Discover",
-		"af_servername":"192.168.31.100",
+		"": "",
+		"-company":"LingJingStudio",
+		"af_servername":"192.168.31.200",
 		"af_serverport":51000
 	}
 }
