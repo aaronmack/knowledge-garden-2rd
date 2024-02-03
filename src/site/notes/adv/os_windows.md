@@ -189,6 +189,15 @@ git: `C:\Users\<username>\.gitconfig`
 	proxy = http://127.0.0.1:10809
 ```
 
+如果某个仓库不需要走代理，例如仓库是本地局域网的，可代理中又是全局，这时可以在那个本地仓库的config文件中增加:
+
+```
+[http]
+	proxy = 
+[https]
+	proxy =
+```
+
 npm:
 
 ```bash
@@ -212,3 +221,46 @@ npm config delete https-proxy
 控制面板 -> Internet Options -> Connections -> Proxy server
 
 <img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/image.7cx1k4pe9fgg.webp" alt="image" width=600/>
+
+# Windows 使用rsync同步文件
+
+rsync是在linux下运行的程序，windows下使用cygwin查询了一下，是有rsync这个包的。遂尝试一下
+
+最开始时根据查到的文章需要ssh，所以在windows下开启了features里面的OpenSSH-server/client。这一步也许不需要。
+
+```bash
+# 安装cygwin
+scoop install cygwin
+# cygwin setup 安装 rsync和nano (文本编辑器)
+--- (这一步需要手动)
+# 配置rsync配置文件,见下面
+nano /etc/rsyncd.conf
+# 启动守护进程
+rsync --daemon
+# 查看端口是否监听，默认是873
+netstat -ano | findstr 873
+```
+
+```bash
+#uid = 0 # 注释了，默认是nobody
+#gid = 0 #
+use chroot = false
+strict modes = false
+hosts allow = *
+log file = rsyncd.log
+
+# Module definitions
+# Remember cygwin naming conventions : c:\work becomes /cygwin/c/work
+#
+[localsync]
+path = /cygdrive/d/mount
+read only = false
+transfer logging = yes
+```
+
+```bash
+# 同步Windows下F:/mount/library到服务端配置的D:/mount目录下
+rsync -avr /cygdrive/f/mount/library 192.168.31.200::localsync
+# 反过来，将服务端配置的D:/mount下的文件同步到F:/mount
+rsync -avr 192.168.31.200::localsync /cygdrive/f/mount
+```
