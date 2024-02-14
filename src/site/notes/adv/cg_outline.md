@@ -7,6 +7,7 @@
 
 <img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/1706417312928.webp" alt="1706417312928" width=600/>
 
+
 # Tools
 
 ## Pipeline
@@ -88,6 +89,16 @@
 
 1. FreeNAS
 
+# Effect Reference
+
+真实地球 https://www.youtube.com/watch?v=7KXGZAEWzn0 [来源](https://www.sidefx.com/forum/topic/74787/?page=1#post-319797)
+
+场景渲染参考
+	3. 武术3D效果图 https://www.youtube.com/watch?v=8b5k0M8wTBg 
+	2. 另类现实 Alternate Realities https://www.youtube.com/watch?v=iKBs9l8jS6Q
+	1. BOSS决战 Boss Fight 3D Montage https://www.youtube.com/watch?v=wgiRK8_iKdg
+	2. 3D Vehicle https://www.youtube.com/watch?v=mIDlU_sKto0
+
 # CG Assets
 
 ## Library
@@ -97,18 +108,20 @@
 3. https://luxcorerender.org/example-scenes/ LuxCoreRender Example Scenes
 4. **PolyHaven** https://polyhaven.com/
 5. Quixel Bridge https://quixel.com/bridge
-6. AMD GPUOpen MaterialX Library https://matlib.gpuopen.com/main/materials/all
+6. **AMD GPUOpen MaterialX** Library https://matlib.gpuopen.com/main/materials/all
 7. Mixamo https://www.mixamo.com/
 9. freepoly.org https://www.freepoly.org/en
 10. free3d https://free3d.com/3d-models/
 11. sketchfab https://sketchfab.com/
 12. 3D Scans https://threedscans.com/ - 3D扫描模型
-13. ambientcg [ambientCG - CC0 Textures, HDRIs and Models](https://ambientcg.com/)
+13. **ambientcg** [ambientCG - CC0 Textures, HDRIs and Models](https://ambientcg.com/)
 15. **Armorpaint Cloud** https://github.com/armory3d/armortools/tree/main/armorpaint
 16. Maya Rigs https://animationmethods.com/rigs.html
 17. Maya rigs and tools https://gumroad.com/
 18. Maya Rigs https://www.characterrigs.com/
 19. blendswap https://www.blendswap.com/
+20. turbosquid - https://www.turbosquid.com
+21. CGTrader https://www.cgtrader.com
 
 ## Example
 
@@ -139,6 +152,8 @@
 ## 资源
 
 1. 面向PipelineTD的USD生存者指南 https://github.com/LucaScheller/VFX-UsdSurvivalGuide
+2. USD Working Group Assets https://github.com/usd-wg/assets
+3. USD资产结构 (alab) https://usd-alab.s3.amazonaws.com/documentation.html
 
 # Blender
 
