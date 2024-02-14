@@ -15,6 +15,8 @@ https://github.com/dreamworksanimation/usdmanager
 python310 -m virtualenv venv
 .\venv\scripts\activate
 
+#  branch: python3
+
 python setup.py install
 pip install PySide2
 
