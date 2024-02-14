@@ -24,3 +24,7 @@ w - vec3 - Angular speed of the particle. This can be thought of as a vector giv
 ## 仓库
 
 Github上分享的Houdini相关的资源 [GitHub - ribponce/particula](https://github.com/ribponce/particula)
+
+## 效果制作
+
+树木吹动模拟 https://vimeo.com/420539635 (Solaris) [来源](https://www.sidefx.com/tutorials/solaris-workshop/)
