@@ -186,14 +186,15 @@
 1. 英语外刊杂志，经济学人、纽约客等 [GitHub - hehonghui/awesome-english-ebooks: 经济学人(含音频)、纽约客、卫报、连线、大西洋月刊等英语杂志免费下载,支持epub、mobi、pdf格式, 每周更新](https://github.com/hehonghui/awesome-english-ebooks)
 2. 掘金翻译计划，翻译了很多技术文章。 [GitHub - xitu/gold-miner: 🥇掘金翻译计划，可能是世界最大最好的英译中技术社区，最懂读者和译者的翻译平台：](https://github.com/xitu/gold-miner)
 3. Maspeak是一个学习新语言单词的平台。搭配有图片。[Learn vocabulary in any language !](https://maspeak.com/)
-4. 视频（Digital Video）技术讲解（面向开发人员） https://github.com/leandromoreira/digital_video_introduction/blob/master/README-cn.md
-5. 中国历朝历代视频讲解 [中国历朝代视频讲解](https://www.historyline.online/)
-1. 开源的CG-Pipeline（管道）工具 [GitHub - cgwire/awesome-cg-vfx-pipeline: List of open-source technologies that help in the process of building a pipeline for CG and VFX productions](https://github.com/cgwire/awesome-cg-vfx-pipeline)
-2. 开源的图形引擎和游戏引擎开放源代码列表 [GitHub - Gforcex/OpenGraphic: Graphic Engine & Game Engine lists](https://github.com/Gforcex/OpenGraphic)
-3. Vulkan® 的开源 C++ 示例合集 [GitHub - SaschaWillems/Vulkan: Examples and demos for the new Vulkan API](https://github.com/SaschaWillems/Vulkan)
-4. 收集了国内开发者的项目集合 [GitHub - 1c7/chinese-independent-developer: 👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么](https://github.com/1c7/chinese-independent-developer)
-5. 开源**灵感**数据库,包含设计，游戏，摄影，壁纸等等，链接集合。[GitHub - zhaoolee/ins: 🍭互联网从业者的灵感数据库，无广告，Github Actions自动检测网站访问速度](https://github.com/zhaoolee/ins)
-6. 概率机器学习书籍（第二部） - [probml.github.io/pml-book/book2.html](https://probml.github.io/pml-book/book2.html)
+4. 唐库学习 -  [世界名著在线阅读，英汉对照，双语逐句朗读，适合影子跟读法学习。](http://www.tanglib.com/read/tanglibhelp/shadowing)
+5. 视频（Digital Video）技术讲解（面向开发人员） https://github.com/leandromoreira/digital_video_introduction/blob/master/README-cn.md
+6. 中国历朝历代视频讲解 [中国历朝代视频讲解](https://www.historyline.online/)
+7. 开源的CG-Pipeline（管道）工具 [GitHub - cgwire/awesome-cg-vfx-pipeline: List of open-source technologies that help in the process of building a pipeline for CG and VFX productions](https://github.com/cgwire/awesome-cg-vfx-pipeline)
+8. 开源的图形引擎和游戏引擎开放源代码列表 [GitHub - Gforcex/OpenGraphic: Graphic Engine & Game Engine lists](https://github.com/Gforcex/OpenGraphic)
+9. Vulkan® 的开源 C++ 示例合集 [GitHub - SaschaWillems/Vulkan: Examples and demos for the new Vulkan API](https://github.com/SaschaWillems/Vulkan)
+10. 收集了国内开发者的项目集合 [GitHub - 1c7/chinese-independent-developer: 👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么](https://github.com/1c7/chinese-independent-developer)
+11. 开源**灵感**数据库,包含设计，游戏，摄影，壁纸等等，链接集合。[GitHub - zhaoolee/ins: 🍭互联网从业者的灵感数据库，无广告，Github Actions自动检测网站访问速度](https://github.com/zhaoolee/ins)
+12. 概率机器学习书籍（第二部） - [probml.github.io/pml-book/book2.html](https://probml.github.io/pml-book/book2.html)
 
 # 游戏
 
