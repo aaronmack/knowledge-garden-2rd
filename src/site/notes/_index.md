@@ -12,6 +12,13 @@
 
 # Entrance 2
 
+### 2024-02-21 - Houdini USD Test
+
+[【效果】Houdini USD 流程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1vy421z7T1)
+
+<img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.4jnvja8zav.webp" alt="image" width=600/>
+
+使用USD流程测试从模型资产到最终渲染的流程。
 ### 2024-01-17 - AYON
 
 [[adv/cg_pipeline#AYON\|CGPipeline - AYON]]
