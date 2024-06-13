@@ -139,7 +139,7 @@ sudo apt install code -o Acquire::http::Proxy="http://172.24.96.1:10811"
 sudo shutdown -h now
 ```
 
-## WSL GUI 2
+## WSL GUI 2 (Used)
 
 ```bash
 # GUI 2
@@ -219,4 +219,40 @@ memory=8GB
 
 ```
  wsl --shutdown
+```
+
+
+## Connect the USB device to WSL2
+
+1. Reference: [将USB设备连接到WSL2：分步教程 - LinuxStory](https://linuxstory.org/connecting-usb-devices-to-wsl2-a-step-by-step-tutorial/)
+
+```bash
+1. Install usbipd (Windows)
+
+winget install usbipd
+
+2. Install usbip (WSL2)
+
+sudo apt install linux-tools-virtual hwdata
+sudo update-alternatives --install /usr/local/bin/usbip usbip `ls /usr/lib/linux-tools/*/usbip | tail -n1` 20
+
+3. List and attach (Windows)
+
+usbipd list
+usbipd bind --busid <BUSID>
+# for me: usbipd bind --busid 1-6
+usbipd attach -b <BUSID> -w <DISTRIBUTION>
+# for me: usbipd attach -b 1-6 -w Ubuntu-24.04
+
+4. Check and use (WSL2)
+
+ls -l /dev/ttyUSB0
+
+sudo usermod -a -G dialout <your_user_name>
+groups
+
+5. Detach (Windows2)
+usbipd detach --busid <BUSID>
+# for me: usbipd detach --busid 1-6
+
 ```
