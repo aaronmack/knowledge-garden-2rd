@@ -12,6 +12,10 @@
 
 # Entrance 2
 
+### 2024-05-20 - 制作可联网控制的小灯
+
+<img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.5mnnqgp1pf.webp" alt="image" width=600 />
+
 ### 2024-02-21 - Houdini USD Test
 
 [【效果】Houdini USD 流程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1vy421z7T1)
