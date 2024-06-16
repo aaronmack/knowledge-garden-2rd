@@ -112,3 +112,10 @@
 > [Transformer - YouTube](https://www.youtube.com/watch?v=ugWDIIOHtPA&list=PLJV_el3uVTsOK_ZK5L0Iv_EQoL1JefRL4&index=61)
 > 在看Transformer视频时，下面这张图中，机器两次都学习到了`it`所指示的含义。
 > <img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/1702299321458.webp" alt="1702299321458" width=500/>
+
+# 悲冽
+
+1. 《一人企业方法论》第二版 https://github.com/easychen/one-person-businesses-methodology-v2.0
+2. 薄冰英语语法 https://oldwestenglish.github.io/grammar/#/
+
+
