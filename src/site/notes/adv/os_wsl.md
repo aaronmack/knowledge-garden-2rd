@@ -256,3 +256,198 @@ usbipd detach --busid <BUSID>
 # for me: usbipd detach --busid 1-6
 
 ```
+
+
+## redsocks 实现全局代理
+
+```bash
+1. 安装
+
+sudo apt-get update  
+sudo apt-get install redsocks
+
+2. 修改配置文件
+sudo nano /etc/redsocks.conf
+---
+redsocks {  
+	local_ip = 127.0.0.1;  
+	local_port = 11111;  
+	
+	ip = 127.0.0.1;  
+	port = 11223;   
+	type = socks5;  
+}
+---
+
+3. 开启
+systemctl start redsocks
+iptables -t nat -F
+iptables -t nat -N REDSOCKS
+iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN 
+iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN 
+iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN 
+iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN 
+iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN 
+iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN 
+iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN 
+iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
+iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 11111
+iptables -t nat -A OUTPUT -p tcp -j REDSOCKS
+
+4. 关闭
+systemctl stop redsocks
+iptables -t nat -F OUTPUT 
+iptables -t nat -F REDSOCKS 
+iptables -t nat -X REDSOCKS
+```
+
+## 附录
+
+1. desktop.sh
+
+```bash
+# X410 WSL2 Helper
+# https://x410.dev/cookbook/#wsl
+# --------------------
+# Setting up essential environment variables for Ubuntu desktop
+# --------------------
+
+# Ubuntu default desktop (GNOME Shell variant)
+# https://wiki.gnome.org/Projects/GnomeShell
+
+export XDG_CURRENT_DESKTOP=ubuntu:GNOME
+export XDG_SESSION_DESKTOP=ubuntu
+export DESKTOP_SESSION=ubuntu
+export GNOME_SHELL_SESSION_MODE=ubuntu
+
+# Commonly referenced environment variables for X11 sessions
+# https://specifications.freedesktop.org/basedir-spec/latest/
+
+export XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+export XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+export XDG_MENU_PREFIX=gnome-
+
+export XDG_SESSION_TYPE=x11
+export XDG_SESSION_CLASS=user
+export GDK_BACKEND=x11
+
+# Disables using Direct3D in Mesa 3D graphics library
+export LIBGL_ALWAYS_SOFTWARE=1
+```
+
+2. proxy.sh
+
+```bash
+#!/bin/sh
+
+hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
+wslip=$(hostname -I | awk '{print $1}')
+
+port=10808
+
+
+PROXY_HTTP="socks5://${hostip}:${port}"
+# PROXY_HTTP="http://${hostip}:${port}"
+
+set_proxy(){
+    export http_proxy="${PROXY_HTTP}"
+    export HTTP_PROXY="${PROXY_HTTP}"
+
+    export https_proxy="${PROXY_HTTP}"
+    export HTTPS_proxy="${PROXY_HTTP}"
+
+    export ALL_PROXY="${PROXY_SOCKS5}"
+    export all_proxy=${PROXY_SOCKS5}
+
+    git config --global http.https://github.com.proxy ${PROXY_HTTP}
+    git config --global https.https://github.com.proxy ${PROXY_HTTP}
+
+    echo "Proxy has been opened."
+}
+
+unset_proxy(){
+    unset http_proxy
+    unset HTTP_PROXY
+    unset https_proxy
+    unset HTTPS_PROXY
+    unset ALL_PROXY
+    unset all_proxy
+    git config --global --unset http.https://github.com.proxy
+    git config --global --unset https.https://github.com.proxy
+
+    echo "Proxy has been closed."
+}
+
+test_setting(){
+    echo "Host IP:" ${hostip}
+    echo "WSL IP:" ${wslip}
+    echo "Try to connect to Google..."
+    resp=$(curl -I -s --connect-timeout 5 -m 5 -w "%{http_code}" -o /dev/null www.google.com)
+    if [ ${resp} = 200 ]; then
+        echo "Proxy setup succeeded!"
+    else
+        echo "Proxy setup failed!"
+    fi
+}
+
+if [ "$1" = "set" ]
+then
+    set_proxy
+elif [ "$1" = "unset" ]
+then
+    unset_proxy
+elif [ "$1" = "test" ]
+then
+    test_setting
+else
+    echo "Unsupported arguments."
+fi
+
+```
+
+
+3. proxy.sh (global)
+
+```bash
+#!/bin/sh
+
+set_proxy(){
+    systemctl start redsocks
+
+    iptables -t nat -F
+    iptables -t nat -N REDSOCKS
+
+    iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN 
+    iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
+
+    iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 11111
+    iptables -t nat -A OUTPUT -p tcp -j REDSOCKS 
+
+    echo "Proxy has been opened."
+}
+
+unset_proxy(){
+    systemctl stop redsocks
+    iptables -t nat -F OUTPUT 
+    iptables -t nat -F REDSOCKS 
+    iptables -t nat -X REDSOCKS 
+
+    echo "Proxy has been closed."
+}
+
+if [ "$1" = "set" ]
+then
+    set_proxy
+elif [ "$1" = "unset" ]
+then
+    unset_proxy
+else
+    echo "Unsupported arguments."
+fi
+```
