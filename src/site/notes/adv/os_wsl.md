@@ -258,47 +258,25 @@ usbipd detach --busid <BUSID>
 ```
 
 
-## redsocks 实现全局代理
+## WSL2 配置
 
 ```bash
-1. 安装
+[wsl2]
+nestedVirtualization=true
+guiApplications=false
+networkingMode = mirrored
+memory=8GB
+```
 
-sudo apt-get update  
-sudo apt-get install redsocks
+# 关闭终端中按下Tab键时出现的提示音
 
-2. 修改配置文件
-sudo nano /etc/redsocks.conf
----
-redsocks {  
-	local_ip = 127.0.0.1;  
-	local_port = 11111;  
-	
-	ip = 127.0.0.1;  
-	port = 11223;   
-	type = socks5;  
-}
----
+```bash
 
-3. 开启
-systemctl start redsocks
-iptables -t nat -F
-iptables -t nat -N REDSOCKS
-iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN 
-iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN 
-iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN 
-iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN 
-iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN 
-iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN 
-iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN 
-iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
-iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 11111
-iptables -t nat -A OUTPUT -p tcp -j REDSOCKS
+sudo nano /etc/inputrc
 
-4. 关闭
-systemctl stop redsocks
-iptables -t nat -F OUTPUT 
-iptables -t nat -F REDSOCKS 
-iptables -t nat -X REDSOCKS
+# 删除行首的注释标识#
+set bell-style none
+
 ```
 
 ## 附录
@@ -403,51 +381,4 @@ else
     echo "Unsupported arguments."
 fi
 
-```
-
-
-3. proxy.sh (global)
-
-```bash
-#!/bin/sh
-
-set_proxy(){
-    systemctl start redsocks
-
-    iptables -t nat -F
-    iptables -t nat -N REDSOCKS
-
-    iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN 
-    iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN
-
-    iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 11111
-    iptables -t nat -A OUTPUT -p tcp -j REDSOCKS 
-
-    echo "Proxy has been opened."
-}
-
-unset_proxy(){
-    systemctl stop redsocks
-    iptables -t nat -F OUTPUT 
-    iptables -t nat -F REDSOCKS 
-    iptables -t nat -X REDSOCKS 
-
-    echo "Proxy has been closed."
-}
-
-if [ "$1" = "set" ]
-then
-    set_proxy
-elif [ "$1" = "unset" ]
-then
-    unset_proxy
-else
-    echo "Unsupported arguments."
-fi
 ```
