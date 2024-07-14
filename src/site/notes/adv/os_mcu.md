@@ -2,6 +2,31 @@
 {"dg-publish":true,"permalink":"/adv/os-mcu/","title":"OS - MCU","noteIcon":""}
 ---
 
+# Attiny 85
+
+参考: https://oshwhub.com/15653072438poiu/ji-yu-attiny85-de-tang-guo-he-you-xi-ji
+
+需要Arduino，Attiny85,杜邦线
+
+1. Arduino IDE中选择 示例-> ArduinoISP 打开示例
+2. Arduino IDE中在Tools中Board->Arduino Uno，选择端口，Programmer选择ArduinoISP。（实际测试中选择了Arduino As ISP，不知有和影响）
+3. 面包板上连接Arduino与Attiny85 （要参考Attiny85的pinout针脚图）
+
+| Arduino Uno | Attiny85 |
+| ----------- | -------- |
+| 5V          | VCC      |
+| GND         | GND      |
+| Pin13       | PB2      |
+| Pin12       | PB1      |
+| Pin 11      | PB0      |
+| Pin 10      | PB5      |
+4. Arduino IDE中Tools->Burnbootloader （烧录一次成功即可）
+5. Arduino IDE中打开游戏代码。在Sketch中选择，Upload using programmer。然后编译上传即可。
+6. 简单测试：将OLED与Attiny85连接。
+
+<img src="https://github.com/aaronmack/picx-images-hosting/raw/master/e/image.3k7w3h0dmk.webp" alt="image" width=500/>
+
+
 # STM32
 
 
@@ -174,6 +199,8 @@ http://dan.drown.org/stm32duino/package_STM32duino_index.json
 https://arduino.esp8266.com/stable/package_esp8266com_index.json
 https://dl.espressif.com/dl/package_esp32_index.json
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json
+https://raw.githubusercontent.com/digistump/arduino-boards-index/master/package_digistump_index.json
 ```
 
 Libraries
