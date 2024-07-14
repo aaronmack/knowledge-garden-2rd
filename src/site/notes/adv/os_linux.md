@@ -615,6 +615,19 @@ sudo python3 -m pip install --pre motioneye
 sudo motioneye_init
 ```
 
+
+# 树莓派系统写入
+
+
+SD Card Formatter
+Win32 Disk Imager
+
+1. Ubuntu Mate
+	1. https://ubuntu-mate.org/download/arm64/jammy/
+2. ImmortalWrt
+	1. PI 3b+ https://downloads.immortalwrt.org/releases/23.05.2/targets/bcm27xx/bcm2710/
+
+
 # 附录
 
 1. proxy.sh (global)
