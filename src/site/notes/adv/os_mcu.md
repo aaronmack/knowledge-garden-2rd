@@ -1168,3 +1168,67 @@ void loop() {
   update_vel();
 }
 ```
+
+# LD14P雷达
+
+1. 连接转接板: 转接板上电蓝灯常亮为CH9102，转接板上电绿灯常亮为CP2102
+
+
+# USB-Cam
+
+1. 安装： sudo apt-get install ros-humble-usb-cam，地址：[GitHub - ros-drivers/usb\_cam: A ROS Driver for V4L2 USB Cameras](https://github.com/ros-drivers/usb_cam)
+
+>[!INFO] 如果在Windows系统中插入USB-Camera，再使用usbipd attach到WSL中，名称不再是`/dev/video0`，可以使用`lsusb`去检查，例如最后可能在 `/dev/bus/usb/001/009` 不知道是不是在这。
+
+
+# 问题解决
+
+## 树莓派连接Arduino开发板，但不显示设备
+
+1. 使用`sudo dmesg`显示
+
+```bash
+ch341 1-1.1:1.0: ch341-uart converter detected
+usb 1-1.1: ch341-uart converter now attached to ttyUSB0
+usb 1-1.1: usbfs: interface 0 claimed by ch341 while 'brltty' sets config #1
+ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+ch341 1-1.1:1.0: device disconnected
+```
+
+2. 可以看到设备本来被`attached to ttyUSB0`，但是后面断开了。
+
+```bash
+# 这一段不知有没有用，但前面测试时执行过了。
+for f in /usr/lib/udev/rules.d/*brltty*.rules; do
+    sudo ln -s /dev/null "/etc/udev/rules.d/$(basename "$f")"
+done
+sudo udevadm control --reload-rules
+# 执行了这一句命令。
+sudo systemctl mask brltty.path
+
+```
+
+## 树莓派与Arduino开发板串口通信，报错权限不足
+
+```bash
+# 使用
+ls -l /dev/ttyUSB0
+# 或者，查看端口信息
+stat /dev/ttyUSB0
+
+# 可以看到设备显示在这个组，添加进去
+sudo usermod -a -G dialout $USER
+
+# 登出，再重新登录即可
+logout
+```
+
+## ros的usb_cam运行报错，权限不足
+
+```bash
+# 下方命令只能临时，重启失效
+chmod 777 /dev/video0
+
+# 使用下方命令，需要logout再登入
+sudo usermod -aG video <your_username>
+```
