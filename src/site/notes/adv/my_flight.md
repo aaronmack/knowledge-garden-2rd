@@ -2,6 +2,9 @@
 {"dg-publish":true,"permalink":"/adv/my-flight/","title":"My Flight","noteIcon":""}
 ---
 
+
+世界地图: https://www.google.com.tw/maps/?hl=zh-CN
+
 # 准备
 
 1. 微软模拟飞行 (MSFS)
@@ -13,11 +16,13 @@
  
 
 # 机场
-1. 贝尔法斯特国际机场（**EGAA**）IATA代码：BFS；ICAO代码：EGAA
-2. 希思罗机场 （**EGLL**） Heathrow Airport , IATA：LHR
-3. 塔城千泉机场（IATA代码：TCG；ICAO代码：**ZWTC**）
-4. 乌鲁木齐地窝堡国际机场 IATA：URC ICAO：**ZWWW**
-5. 曼彻斯特机场 (IATA: MAN；ICAO: **EGCC**）
+1. 北爱尔兰 贝尔法斯特国际机场（**EGAA**）IATA代码：BFS；ICAO代码：EGAA
+2. 英国 希思罗机场 （**EGLL**） Heathrow Airport , IATA：LHR
+3. 塔城 千泉机场（IATA代码：TCG；ICAO代码：**ZWTC**）
+4. 乌鲁木齐 地窝堡国际机场 IATA：URC ICAO：**ZWWW**
+5. 英格兰 曼彻斯特机场 (IATA: MAN；ICAO: **EGCC**）
+6. 荷兰 鹿特丹海牙机场 （**EHRD**）
+7. 荷兰 格罗宁根机场 (**EHGG**)
 
 # 飞机
 
@@ -31,10 +36,18 @@
 
 1. 显示飞机实时信息的网站 https://www.flightradar24.com/
 2. 国际民航组织机场代码 <img src="https://github.com/aaronmack/picx-images-hosting/raw/master/e/image.7ljvpq8wt3.webp" alt="image" />
-
+3. 用于浏览高空、低空、VFR航路图和部分机场航图的网站 https://skyvector.com/
+4. VFR 地图 https://www.openflightmaps.org
+5. Navigraph https://navigraph.com/downloads (Need Subscription)
+6. 用于浏览航图的网站 https://chartfox.org
+7. VFR 航图 https://vfrchart.lvnl.nl/
+8. 显示机场天气的网站 https://www.orbifly.com/member/metmap.php
+9. VFR飞行用语指南: https://aviationpro.nl/tutorials/vatsim-tutorials/vfr-phraseology-guide/
 # 例子学习
 
 <img src="https://github.com/aaronmack/picx-images-hosting/raw/master/e/image.231r9k05x7.webp" alt="image" />
+
+---
 
 1. 呼号 Call Sign: - **UAE8867** - "Emirates Eight - Eight - Six - Seven" or "Emirates Eighty-Eight - Sixty Seven"
 2. Type Code: **A20N**
@@ -52,6 +65,14 @@
 7. ICAO Equipment Codes(无线电通信、导航及进近助航设备与能力) [link](https://support.foreflight.com/hc/en-us/articles/360049193173-ICAO-Equipment-and-PBN-Code-Setup-Guide)
 1. Transponder - 监视设备与能力
 2. Remark: I am new to VATSIM, Please say slowly, Thank Sir.
+
+---
+1. 飞机名称: Cessna 172
+2. Call Sign: PHAVP
+3. Aircraft Type (ICAO): C172
+4. Equipment Codes: SDFGLY 
+5. Transponder: S
+
 # 要知道的
 
 1. **ATIS**: 自动终端情报服务（Automatic Terminal Information Service）
@@ -110,3 +131,15 @@
 25. **ATC** 航空交通管制（英文：Air traffic control）
 26. **Wake Category**: 尾流类别
 27. 飞行航线，也称为航路、空中走廊（英语：**Airway**）
+28. **Waypoint**: 这是飞行中的一个导航点
+29. **RNAV**是“Radio Navigation”的缩写，中文意思是“无线电导航”。一种航空导航技术，
+30. **MSL**: 表示“Mean Sea Level”，即平均海平面以上。这是一种高度基准，用来表示飞机相对于平均海平面的高度。
+31. **FL**: 表示“Flight Level”，即飞行高度层。飞行高度层是一种标准化的高度表示方式，通常以100英尺为一个单位。飞行高度层的数值乘以100就是实际的飞行高度（英尺）
+32. **CTR**: 表示“Control Zone”，即控制区域。控制区域是一种空域，通常围绕机场，飞机在该区域内飞行需要遵守特定的规则和管制要求。
+33. **Class** 机场等级 https://eaip.lvnl.nl/web/2024-06-27-AIRAC/html/index-en-GB.html 在这个链接中可以看到 （Part 2 EN ROUTE (ENR) -> ENR 1.4 ATS AIRSPACE CLASSIFICATION AND DESCRIPTION）
+34. **TMA/TCA**: Terminal Maneuvering Area/Terminal Control Area 中文意思是“终端机动区域”或“终端控制区域”,是环绕交通繁忙的主要机场的管制空域。
+35. **ATZ** 全称：Airport Traffic Zone。含义：ATZ 是指机场交通区域
+
+# 词汇
+
+1. pitot: 空速管
