@@ -627,6 +627,119 @@ Win32 Disk Imager
 2. ImmortalWrt
 	1. PI 3b+ https://downloads.immortalwrt.org/releases/23.05.2/targets/bcm27xx/bcm2710/
 
+# Ubuntu 设置启动时默认进入命令行
+
+```bash
+sudo systemctl enable multi-user.target --force 
+sudo systemctl set-default multi-user.target 
+# start desktop 
+startx
+```
+
+# Ubuntu 设置读取ntfs硬盘
+
+```
+sudo apt install ntfs*
+sudo fdisk -l
+lsblk
+sudo mount -t ntfs-3g /dev/sda1 /mnt/od
+
+# 检查挂载
+mount | grep /dev/sda1
+# 取消挂载
+sudo umount /dev/sda1
+# 弹出设备
+sudo eject /dev/sda1
+```
+
+# Auto Renewal
+
+```jsx
+# 创建一个service用于auth
+ [Unit]
+ Description=Microsoft E5 Auto Renewal
+ After=network.target
+
+ [Service]
+ Type=simple
+ WorkingDirectory=/root/Microsoft-API-Test
+ ExecStart=python3.10 /root/Microsoft-API-Test/auth.py <client_id> <secret>
+ Restart=on-failure
+
+ [Install]
+ WantedBy=multi-user.target
+```
+
+code
+
+```jsx
+# 创建一个服务用于运行主程序
+ [Unit]
+ Description=Microsoft E5 Auto Renewal
+ After=network.target
+
+ [Service]
+ Type=simple
+ WorkingDirectory=/root/Microsoft-API-Test
+ ExecStart=python3.10 /root/Microsoft-API-Test/main.py
+ Restart=on-failure
+
+ [Install]
+ WantedBy=multi-user.target
+```
+
+```jsx
+# 用于获取refresh token
+python auth.py YourClientID YourClientSecret
+# 运行
+python main.py
+```
+
+# rclone 配置 onedrive 5T
+
+
+```bash
+# rclone 安装
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+# 在Microsoft Azure App Registrations中创建新的application
+1. redirect url: http://localhost:53682
+2.权限：
+		Files.Read
+		Files.Read.All
+
+		Files.ReadWrite
+		Files.ReadWrite.All
+
+		offline_access
+		User.Read
+3.创建secrets并记录
+
+# 配置rclone
+> rclone config
+配置中选择Microsoft OneDrive。例如名称叫onedrive。填入Client ID与Secret ID。最后当出现需要输入config_token> 时
+执行命令rclone authorize "onedrive"进行配置。
+
+# 挂载同步
+rclone sync odrive:sync/aync /mnt/od/aync
+```
+
+# 树莓派命令行连接wifi
+
+```jsx
+# 1.检查信道与配置地区为US
+iwlist channel
+raspi-config
+
+# 显示当前连接的wifi
+nmcli con show --active
+
+# 扫描当前wifi
+nmcli dev wifi list
+
+# 连接到一个新的wifi
+nmcli dev wifi connect <SSID> password <password>
+```
 
 # 附录
 
