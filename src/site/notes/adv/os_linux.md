@@ -542,6 +542,13 @@ AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
 systemctl restart sshd.service
 ```
 
+# Linux配置navie代理
+
+## 服务端
+
+## 客户端
+
+nekoray
 
 # redsocks 实现全局代理
 
@@ -627,11 +634,14 @@ Win32 Disk Imager
 2. ImmortalWrt
 	1. PI 3b+ https://downloads.immortalwrt.org/releases/23.05.2/targets/bcm27xx/bcm2710/
 
-# Ubuntu 设置启动时默认进入命令行
+# Ubuntu 设置启动时默认进入命令行&图形界面
 
 ```bash
-sudo systemctl enable multi-user.target --force 
-sudo systemctl set-default multi-user.target 
+#sudo systemctl enable multi-user.target --force 
+# Command Line
+sudo systemctl set-default multi-user.target
+# Graphical
+sudo systemctl set-default graphical.target
 # start desktop 
 startx
 ```
@@ -652,40 +662,40 @@ sudo umount /dev/sda1
 sudo eject /dev/sda1
 ```
 
-# Auto Renewal
+# 微软Auto Renewal
 
 ```jsx
 # 创建一个service用于auth
- [Unit]
- Description=Microsoft E5 Auto Renewal
- After=network.target
+[Unit]
+Description=Microsoft E5 Auto Renewal
+After=network.target
 
- [Service]
- Type=simple
- WorkingDirectory=/root/Microsoft-API-Test
- ExecStart=python3.10 /root/Microsoft-API-Test/auth.py <client_id> <secret>
- Restart=on-failure
+[Service]
+Type=simple
+WorkingDirectory=/root/Microsoft-API-Test
+ExecStart=python3.10 /root/Microsoft-API-Test/auth.py <client_id> <secret>
+Restart=on-failure
 
- [Install]
- WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target
 ```
 
 code
 
 ```jsx
 # 创建一个服务用于运行主程序
- [Unit]
- Description=Microsoft E5 Auto Renewal
- After=network.target
+[Unit]
+Description=Microsoft E5 Auto Renewal
+After=network.target
 
- [Service]
- Type=simple
- WorkingDirectory=/root/Microsoft-API-Test
- ExecStart=python3.10 /root/Microsoft-API-Test/main.py
- Restart=on-failure
+[Service]
+Type=simple
+WorkingDirectory=/root/Microsoft-API-Test
+ExecStart=python3.10 /root/Microsoft-API-Test/main.py
+Restart=on-failure
 
- [Install]
- WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target
 ```
 
 ```jsx
@@ -739,6 +749,60 @@ nmcli dev wifi list
 
 # 连接到一个新的wifi
 nmcli dev wifi connect <SSID> password <password>
+```
+
+# mysql启动失败
+
+## 一 检查是否日志文件夹被删除
+
+```bash
+sudo mkdir /var/log/mysql
+sudo chown -R mysql:mysql /var/log/mysql
+sudo systemctl stop mysql
+sudo systemctl start mysql
+```
+
+# Linux 设置退出后 ssh还起作用
+
+```bash
+sudo apt-get install screen
+screen -S <name>
+screen -ls
+```
+
+# Linux 远程VNC Server
+
+1. https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04
+2. https://tecadmin.net/setup-x11vnc-server-on-ubuntu-linuxmint/
+
+```bash
+# 安装
+sudo apt install xfce4 xfce4-goodies
+sudo apt install x11vnc
+x11vnc -storepasswd
+
+sudo systemctl start x11vnc
+
+# 启动
+x11vnc -usepw -display :1
+
+# 配置
+mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
+nano ~/.vnc/xstartup
+---
+#!/bin/bash
+xrdb $HOME/.Xresources
+startxfce4 &
+---
+chmod +x ~/.vnc/xstartup
+
+```
+
+# 安装python-pip
+
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
 ```
 
 # 附录
