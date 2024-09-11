@@ -85,9 +85,21 @@
 
 1. CG VFX Pipeline [GitHub - cgwire/awesome-cg-vfx-pipeline: List of open-source technologies that help in the process of building a pipeline for CG and VFX productions](https://github.com/cgwire/awesome-cg-vfx-pipeline)
 
+## OpenFX
+
+### Houdini中OpenFX的设置
+
+1. `OFX_PLUGIN_PATH - C:\Program Files\Common Files\OFX\Plugins`
+
+例如安装 蓝宝石OFX插件, 安装后会在目录中安装 `Sapphire.ofx.bundle` 这个文件。
+
 ## Storage
 
 1. FreeNAS
+
+## Physics Simulator
+
+1. https://github.com/google-deepmind/mujoco
 
 # Effect Reference
 
@@ -183,8 +195,21 @@
 19 - https://www.sidefx.com/community/houdini-19-sneak-peek/
 19.5 - https://www.sidefx.com/community/houdini-195-sneak-peek/
 20 - https://www.sidefx.com/products/whats-new-in-h20/
+20.5 - https://www.sidefx.com/products/whats-new-in-h205/
 
+## Houdini Package Path
 
+1. `C:\Users\<Username>\Documents\houdini20.5\packages`
+
+## Solver
+
+### MPM
+
+1. MPM Solver，即Material Point Method（材料点方法）求解器，MPM通过在固定的背景网格（Eulerian grid）上解决动量平衡方程，同时在材料点（Lagrangian points）上存储状态变量（如应力、速度或质量），这些材料点随着材料的变形而移动。
+
+### FEM
+
+1. 有限元法（Finite Element Method，简称FEM）是一种数值分析技术，它通过将连续的物理结构离散化成有限数量的小部分，即“元素”，来近似模拟实体的物理行为。
 
 # Unity
 
@@ -344,3 +369,11 @@ https://github.com/JasonMa0012/JTRP
 作者个人对虚幻引擎中的GameplayAbilitySystem（GAS）的理解。[GitHub - tranek/GASDocumentation: My understanding of Unreal Engine 5's GameplayAbilitySystem plugin with a simple multiplayer sample project.](https://github.com/tranek/GASDocumentation)
 
 [https://github.com/UE4-OceanProject/Environment-Project/tree/UE5?tab=readme-ov-file](https://github.com/UE4-OceanProject/Environment-Project/tree/UE5?tab=readme-ov-file) 轻松创建ue5环境
+
+# Maya
+
+## Maya Modules Path
+
+1. `C:\Users\<Username>\Documents\maya\modules`
+2. `C:\Program Files\Common Files\Autodesk Shared\Modules\Maya`
+3. ``<InstallDir>\Autodesk\Maya2025\modules
