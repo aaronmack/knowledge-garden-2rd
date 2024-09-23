@@ -264,3 +264,9 @@ rsync -avr /cygdrive/f/mount/library 192.168.31.200::localsync
 # 反过来，将服务端配置的D:/mount下的文件同步到F:/mount
 rsync -avr 192.168.31.200::localsync /cygdrive/f/mount
 ```
+
+# Windows 通过http请求关机的程序
+
+[https://github.com/karpach/remote-shutdown-pc](https://github.com/karpach/remote-shutdown-pc)
+
+安卓手机Termux执行: `curl http://<ip>:5001/secret/shutdown` 即可关机
