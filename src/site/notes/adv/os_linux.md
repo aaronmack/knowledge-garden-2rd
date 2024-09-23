@@ -805,6 +805,14 @@ wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
 ```
 
+# MQTT Server
+
+mosquitto
+
+教程 如何安装
+
+https://medium.com/gravio-edge-iot-platform/how-to-set-up-a-mosquitto-mqtt-broker-securely-using-client-certificates-82b2aaaef9c8
+
 # 附录
 
 1. proxy.sh (global)
