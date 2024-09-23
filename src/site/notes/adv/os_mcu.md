@@ -190,6 +190,7 @@ IDE可以用Thonny。
 
 # ATINY85
 
+
 # Arduino
 
 Additional Boards Manager URLs
@@ -220,6 +221,34 @@ FastLED
 PubSubClient
 ```
 
+## 摇杆读取
+
+```c
+int JoyStick_X = A1; // X轴连接到A1引脚
+int JoyStick_Y = A0; // Y轴连接到A0引脚
+int JoyStick_Z = 3;  // Z轴连接到数字引脚D3
+ 
+void setup() {
+  pinMode(JoyStick_Z, INPUT);
+  Serial.begin(9600); // 设置串口波特率为9600
+}
+ 
+void loop() {
+  int x, y, z;
+  x = analogRead(JoyStick_X); // 读取X轴的模拟值
+  y = analogRead(JoyStick_Y); // 读取Y轴的模拟值
+  z = digitalRead(JoyStick_Z); // 读取Z轴的数字值
+ 
+  Serial.print("X: ");
+  Serial.print(x);
+  Serial.print(" Y: ");
+  Serial.print(y);
+  Serial.print(" Z: ");
+  Serial.println(z);
+ 
+  delay(100); // 延迟1秒
+}
+```
 
 # OLED 0.96 IIC 128x64
 
@@ -1231,4 +1260,169 @@ chmod 777 /dev/video0
 
 # 使用下方命令，需要logout再登入
 sudo usermod -aG video <your_username>
+```
+
+# ESP32 与 ROS2 交互
+
+将已经刷入Micropython的ESP32恢复到可以刷入Arduino的状态 `esptool --port COM15 erase_flash`，
+
+根据 https://github.com/micro-ROS/micro_ros_arduino 用Arduino刷入ESP32模块，Example使用 `micro-ros_publisher-wifi`
+
+上位机需要启动 `ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888` 需要安装micro_ros_agent
+
+# Micro ROS
+
+## micro ros 搭配摇杆控制
+
+```c
+#include <micro_ros_arduino.h>
+
+#include <stdio.h>
+#include <rcl/rcl.h>
+#include <rcl/error_handling.h>
+#include <rclc/rclc.h>
+#include <rclc/executor.h>
+
+#include <geometry_msgs/msg/twist.h>
+
+#if !defined(ESP32) && !defined(TARGET_PORTENTA_H7_M7) && !defined(ARDUINO_NANO_RP2040_CONNECT) && !defined(ARDUINO_WIO_TERMINAL)
+#error This example is only avaible for Arduino Portenta, Arduino Nano RP2040 Connect, ESP32 Dev module and Wio Terminal
+#endif
+
+rcl_publisher_t publisher;
+geometry_msgs__msg__Twist msg;
+rclc_support_t support;
+rcl_allocator_t allocator;
+rcl_node_t node;
+
+int VRx = 35;
+int VRy = 34;
+int SW = 32;
+int xValue = 0; 
+int yValue = 0;
+int xVoltsValue = 0; 
+int yVoltsValue = 0;
+int swState = 1;
+
+#define LED_PIN 13
+
+#define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
+#define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}
+
+void error_loop(){
+  while(1){
+    digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+    delay(100);
+  }
+}
+
+void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+{
+  RCLC_UNUSED(last_call_time);
+  if (timer != NULL) {
+    RCSOFTCHECK(rcl_publish(&publisher, &msg, NULL));
+  }
+}
+
+void setup() {
+  set_microros_wifi_transports("MERCURY_051E", "23456789", "192.168.31.200", 8888);
+  Serial.begin(115200);
+
+  analogReadResolution(12);
+  //analogReadResolution(12);  // Defalut
+  //analogSetAttenuation(ADC_11db);
+
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, HIGH);
+  pinMode(VRx, INPUT);
+  pinMode(VRy, INPUT);
+  pinMode(SW, INPUT_PULLUP);
+
+  delay(2000);
+
+  allocator = rcl_get_default_allocator();
+
+  //create init_options
+  RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
+
+  // create node
+  RCCHECK(rclc_node_init_default(&node, "micro_ros_arduino_wifi_node", "my_qos_label", &support));
+
+  // create publisher
+  RCCHECK(rclc_publisher_init_default(
+    &publisher,
+    &node,
+    ROSIDL_GET_MSG_TYPE_SUPPORT(geometry_msgs, msg, Twist),
+    "/cmd_vel"));
+  
+  msg.linear.x = 0.0;
+  msg.angular.z = 0.0;
+}
+
+float transform(float x, float v) {
+    float result;
+    if (x >= 0) {
+        result = pow(x, v);
+    } else {
+        result = pow(-x, v);
+        result = -result;
+    }
+    return result;
+}
+
+void processJoyValue()
+{
+    xValue = analogRead(VRx);
+    yValue = analogRead(VRy);
+    // xVoltsValue = analogReadMilliVolts(VRx);
+    // yVoltsValue = analogReadMilliVolts(VRy);
+    swState = digitalRead(SW);
+
+    // FIXME the offset.
+    int offsetX = 109;
+    int offsetY = 65;
+    
+    // Remap
+    int linearX = map(xValue + offsetX, 0, 4095, 0, 200);
+    int angleY = map(yValue + offsetY, 0, 4095, 0, 200);
+    linearX = max(0, linearX); linearX = min(200, linearX);
+    angleY = max(0, angleY); angleY = min(200, angleY);
+
+    // Reduce noise
+    if(linearX < 103 && linearX > 97)
+      linearX =  100;
+    if(angleY < 103 && angleY > 97)
+      angleY =  100;
+    
+    // Normalize
+    float linear_x = (float(linearX) - 100.0) / 100.0;
+    float angle_y = (float(angleY) - 100.0) / 100.0;
+    linear_x = -transform(linear_x, 2.3);
+    angle_y = -transform(angle_y, 2.3) * 3.0;
+
+    // Serial.print("X-axis: ");
+    // Serial.print(xValue);
+    // Serial.print(" | Y-axis: ");
+    // Serial.print(yValue);
+    // Serial.print(" | X-volts: ");
+    // Serial.print(linearX);
+    // Serial.print(" | Y-volts: ");
+    // Serial.print(angleY);
+    // Serial.print(" | Switch: ");
+    // Serial.println(swState);
+
+    msg.linear.x = linear_x;
+    msg.angular.z = angle_y;
+    if(swState == 0)
+    {
+      msg.linear.x = 0.0;
+      msg.angular.z = 0.0;
+    }
+}
+
+void loop() {
+    processJoyValue();
+    RCSOFTCHECK(rcl_publish(&publisher, &msg, NULL));
+    delay(20);
+}
 ```
