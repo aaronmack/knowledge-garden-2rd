@@ -623,6 +623,7 @@ fly.io
 * tensorflow: [GitHub - tensorflow/tensorflow: An Open Source Machine Learning Framework for Everyone](https://github.com/tensorflow/tensorflow)
 * ONNX：Open Neural Network Exchange（开放式神经网络交换）[ONNX | Home](https://onnx.ai/)
 * OpenVINO - 从框架中优化深度学习模型。
+* RL-LLM - 大模型+强化学习
 
 * Gradient descent 梯度下降 - （鞍点，局部最优）
 	* derivate - 求导，learning rate 学习速率
@@ -664,6 +665,7 @@ fly.io
 * Anomaly Detection 异常侦测
 * LoRA，英文全称Low-Rank Adaptation of Large Language Models，直译为大语言模型的低阶适应，这是微软的研究人员为了解决大语言模型微调而开发的一项技术。
 * PGNet是一种新颖的框架，用于通过点收集操作实时阅读文本。 基于多任务学习的单步文本检测识别器。
+* SFT（Supervised Fine-Tuning）监督微调
 
 ---
 * AGI（通用人工智能）1.人工智慧是我们的目标。2.人类的能力是本能与学习。
@@ -840,3 +842,6 @@ LLM可视化 [https://bbycroft.net/llm](https://bbycroft.net/llm)
 * 自由表面 （free surface），包面后的几何
 * Eikonal equation(程函方程) - 程函方程的一般形式为$|\nabla u(x)|=F(x), x∈Ω$，  约束条件：边界$u(x)$为$0$；$F(x)$是位置的函数， $|·|$  是欧几里得范数，$u(x)$是从边界到Ω内部x的所需要的最短时间，F(x)是在x处耗费的时间。
   <img src="https://cdn.jsdelivr.net/gh/aaronmack/image-hosting@master/e/1702320461230.webp" alt="1702320461230" width=400/>
+
+# (Robot)
+
