@@ -103,6 +103,10 @@
 > [这，就是可以拿去传家开店的万能卤水配方！](https://mp.weixin.qq.com/s/6seLu_fNJ9H8b8X3Xg4vmA)
 > 这文章中的卤水看的非常馋人，一定要自己试试
 
+> [鲁迅的一生-知乎](https://zhuanlan.zhihu.com/p/69796806)
+> 不朽。
+
+
 # 发现
 
 > [NixOS](https://github.com/ryan4yin/nixos-and-flakes-book)
