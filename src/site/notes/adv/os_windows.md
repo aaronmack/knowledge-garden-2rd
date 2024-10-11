@@ -270,3 +270,64 @@ rsync -avr 192.168.31.200::localsync /cygdrive/f/mount
 [https://github.com/karpach/remote-shutdown-pc](https://github.com/karpach/remote-shutdown-pc)
 
 安卓手机Termux执行: `curl http://<ip>:5001/secret/shutdown` 即可关机
+
+# Windows Steam假入库中招
+
+[https://www.bilibili.com/read/cv29858481/](https://www.bilibili.com/read/cv29858481/)
+
+```bash
+Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope CurrentUser
+Get-ExecutionPolicy
+```
+
+# Windows 下百度网盘右键菜单关闭
+
+```bash
+reg delete HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\YunShellExt /f reg delete HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\YunShellExt /f pause
+```
+
+# Windows 11 恢复经典右键菜单
+
+```jsx
+reg.exe add "HKCU\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32" /f /ve
+
+# Computer\\HKEY_CURRENT_USER\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32 
+```
+
+# Windows下 Win+R 常用命令
+
+```jsx
+ncpa.cpl # 网络连接窗口
+gpedit.msc # 用户的组策略设置
+msconfig # 系统配置
+```
+
+# Windows 换系统后 git仓库报错
+
+```jsx
+fatal: detected dubious ownership in repository at 'C:/src/FeELib-for-Houdini'
+'C:/src/FeELib-for-Houdini' is owned by:
+        (inconvertible) (S-1-5-21-000000000-000000000-000000000-1001)
+but the current user is:
+        DESKTOP-8XTDVAM/Aaron (S-1-5-21-000000000-000000000-000000000-1001)
+To add an exception for this directory, call:
+
+        git config --global --add safe.directory F:/src/FeELib-for-Houdini
+```
+
+```jsx
+# By kimi
+takeown /f "F:\\src\\FeELib-for-Houdini" /r /d y
+icacls "F:\\src\\FeELib-for-Houdini" /grant Aaron:F /t
+```
+
+# Windows11 Copilot安装与更新
+
+首先更改系统区域为国外。后再安装Copilot
+
+[https://apps.microsoft.com/detail/9nht9rb2f4hd?hl=en-US&gl=US](https://apps.microsoft.com/detail/9nht9rb2f4hd?hl=en-US&gl=US)
+
+
+<img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.4qrb2lww9n.webp" alt="image" width=500/>
+
+清除掉cookies再重新登录。
