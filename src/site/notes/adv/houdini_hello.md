@@ -192,10 +192,13 @@ Github上分享的Houdini相关的资源 [GitHub - ribponce/particula](https://g
 		* 创建WriteGeo节点，连接到Scene1节点后，填上输出路径与文件名.abc即可导出场景。
 
 ## Lessons 课程
-* Axiom Fundamentals <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.58h5hno41a.webp" alt="image" width=200/>
-* lessons/realistic-explosions <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.7awxsrtg5u.webp" alt="image" width=200/>
 
-* lessons/big-fire <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.7egk3fhzwz.webp" alt="image" width=200/>
+Urban Bradesko https://www.doublejumpacademy.com/ 
+
+* Axiom Fundamentals <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.58h5hno41a.webp" alt="image" width=200/>
+* lessons/realistic-explosions
+
+* lessons/big-fire <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.7egk3fhzwz.webp" alt="image" width=200/> 
 
 * lessons/anime-impact-fx
 
