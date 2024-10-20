@@ -196,6 +196,7 @@
 10. 收集了国内开发者的项目集合 [GitHub - 1c7/chinese-independent-developer: 👩🏿‍💻👨🏾‍💻👩🏼‍💻👨🏽‍💻👩🏻‍💻中国独立开发者项目列表 -- 分享大家都在做什么](https://github.com/1c7/chinese-independent-developer)
 11. 开源**灵感**数据库,包含设计，游戏，摄影，壁纸等等，链接集合。[GitHub - zhaoolee/ins: 🍭互联网从业者的灵感数据库，无广告，Github Actions自动检测网站访问速度](https://github.com/zhaoolee/ins)
 12. 概率机器学习书籍（第二部） - [probml.github.io/pml-book/book2.html](https://probml.github.io/pml-book/book2.html)
+13. 中国历代纪元表 https://home.olemiss.edu/~gg/lidaijiy.htm
 
 # 游戏
 
