@@ -29,6 +29,17 @@ https://github.com/TGSAN/CMWTAT_Digital_Edition/releases/tag/2.6.4.0
 https://github.com/qtkite/defender-control
 
 > [!WARNING] （windows-defender-remover）在移除时一定要选择Safe的选项，这样可以Rollback。但不知为何，会使默认的windows-cmd变成管理员权限的，这样导致一些软件不能正常使用。
+
+## Windows Defender 关闭 Real Time Protection
+
+```bash
+Set-MpPreference -DisableRealtimeMonitoring $true
+```
+
+设置管理员运行，创建快捷方式，再设置管理员方式运行。
+
+`powershell.exe -ExecutionPolicy Bypass -File "C:\DisableRealTimeProtection.ps1"
+`
 ## Windows 磁盘映射
 
 有时候你有个WebDAV或者OneDrive，但是Windows自带的磁盘映射似乎很容易卡死，在查找对应的替代方案是，找到了RaiDrive，可以映射很多很多种服务~
@@ -331,3 +342,16 @@ icacls "F:\\src\\FeELib-for-Houdini" /grant Aaron:F /t
 <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.4qrb2lww9n.webp" alt="image" width=500/>
 
 清除掉cookies再重新登录。
+
+# Windows 移除PIN
+
+https://answers.microsoft.com/en-us/windows/forum/all/how-to-remove-pin-in-windows-10/62a4ce49-3684-4b05-b4f2-f105ae3be2a3
+
+Let’s try simple steps and check if this helps in resolving the issue. Follow the below steps.
+
+1. Open the **Settings**, and click/tap on the **Accounts** icon. 
+    If you are using a Microsoft Account to sign in, then make sure that you verify  your account on the PC.
+2. Select **Sign-in options**, and click/tap on **I forgot my PIN**.
+3. Click/tap on **Continue**.
+4. Leave the **PIN fields empty**, and click/tap on **Cancel**.
+5. Your PIN will now be removed. You can create a new PIN whenever you want to or continue using your Windows 10 PC without a PIN.
