@@ -294,7 +294,9 @@ Get-ExecutionPolicy
 # Windows 下百度网盘右键菜单关闭
 
 ```bash
-reg delete HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\YunShellExt /f reg delete HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\YunShellExt /f pause
+reg delete HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\YunShellExt /f 
+reg delete HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\YunShellExt /f
+pause
 ```
 
 # Windows 11 恢复经典右键菜单
@@ -355,3 +357,14 @@ Let’s try simple steps and check if this helps in resolving the issue. Follow 
 3. Click/tap on **Continue**.
 4. Leave the **PIN fields empty**, and click/tap on **Cancel**.
 5. Your PIN will now be removed. You can create a new PIN whenever you want to or continue using your Windows 10 PC without a PIN.
+
+# Windows 11 桌面 删除Linux图标
+
+未开启 Subsystem for Linux 桌面莫名出现Linux图标
+
+```bash
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}"=dword:00000001
+```
