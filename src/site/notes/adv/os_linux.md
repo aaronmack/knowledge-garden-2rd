@@ -813,6 +813,17 @@ mosquitto
 
 https://medium.com/gravio-edge-iot-platform/how-to-set-up-a-mosquitto-mqtt-broker-securely-using-client-certificates-82b2aaaef9c8
 
+# Ubuntu apt proxy
+
+https://askubuntu.com/questions/257290/configure-proxy-for-apt
+
+```
+sudo nano /etc/apt/apt.conf
+
+Acquire::http::Proxy "http://yourproxyaddress:proxyport";
+```
+
+
 # 附录
 
 1. proxy.sh (global)
