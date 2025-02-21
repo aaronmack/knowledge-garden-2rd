@@ -12,7 +12,11 @@
 
 # Entrance 2
 
-### 2024-05-20 - 制作可联网控制的小灯
+### 2024-11-10 - 简易感应小灯+远程电脑开机 Infrared Sensor Lamp (light) 
+
+<img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.7egwnl7nlq.webp" alt="image" width=600/>
+
+### 2024-05-20 - 制作可联网控制的小彩灯
 
 <img src="https://cdn.jsdelivr.net/gh/aaronmack/picx-images-hosting@master/e/image.5mnnqgp1pf.webp" alt="image" width=600 />
 
